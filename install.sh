@@ -2,17 +2,20 @@
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 
 xdg-user-dirs-update 
+sudo apt update
 sudo apt install nala -y
+sudo nala install -y ca-certificates curl gnupg
 
 # for nodejs for lsp
 sudo mkdir -p /etc/apt/keyrings
 curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
 NODE_MAJOR=20
 echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
-sudo nala update
 
 # install
-sudo nala install xorg feh awesome awesome-extra x11-xserver-utils rofi kitty vlc firefox-esr x11-common xserver-xorg-input-all desktop-base xserver-xorg-video-all alsa-utils pipewire pavucontrol network-manager vim wget zip unzip 7zip curl tldr git build-essential gettext cmake fonts-font-awesome fonts-noto-color-emoji acpid tlp blueman brightnessctl pamixer pipewire-alsa playerctl firmware-misc-nonfree htop python3-pip python3-pynvim python3-venv ssh lightdm ripgrep fuse openconnect ca-certificates gnupg nodejs -y
+sudo nala update
+sudo nala install xorg feh awesome awesome-extra x11-xserver-utils rofi kitty vlc firefox-esr x11-common xserver-xorg-input-all desktop-base xserver-xorg-video-all alsa-utils pipewire pavucontrol network-manager vim wget zip unzip 7zip tldr git build-essential gettext cmake fonts-font-awesome fonts-noto-color-emoji acpid tlp blueman brightnessctl pamixer pipewire-alsa playerctl firmware-misc-nonfree htop python3-pip python3-pynvim python3-venv ssh lightdm ripgrep fuse openconnect nodejs -y
+sudo nala update && sudo nala upgrade -y
 
 # neovim
 mkdir ~/github/
@@ -34,6 +37,12 @@ wget https://github.com/obsidianmd/obsidian-releases/releases/download/v1.4.14/O
 chmod u+x Obsidian-1.4.14.AppImage
 sudo ln -s ~/github/obsidian/Obsidian-1.4.14.AppImage /usr/local/bin/Obsidian
 
+# discord
+cd ~/github/
+mkdir discord && cd discord
+wget "https://discord.com/api/download?platform=linux&format=deb" -O discord.deb
+sudo apt install ./discord.deb
+
 # systemctl stuff
 sudo systemctl enable lightdm
 sudo systemctl set-default graphical.target
@@ -51,14 +60,15 @@ sudo systemctl restart NetworkManager
 # fonts
 cd
 mkdir ~/.fonts
-curl -OL https://github.com/ryanoasis/nerd-fonts/releases/download/FiraMono.zip
+curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraMono.zip
 unzip FiraMono.zip -d ~/.fonts/
 fc-cache -vf
 rm ./FiraMono.zip
 
 # Config
-$(SCRIPT_DIR)/update_local.sh
+$SCRIPT_DIR/update_local.sh
 
+mkdir -p ~/.local/share/tldr
 tldr -u
 
 # nmcli c delete eduroam
