@@ -372,7 +372,7 @@ globalkeys = gears.table.join(
 	-- Browser
 	awful.key({ modkey }, "b", function()
 		awful.util.spawn("firefox")
-	end, { description = "run prompt", group = "applications" }),
+	end, { description = "start browser", group = "applications" }),
 
 	-- Multimedia Keys
 	awful.key({}, "XF86AudioRaiseVolume", function()
@@ -392,7 +392,7 @@ globalkeys = gears.table.join(
 	end, { description = "Increase Brightness", group = "multi-media" }),
 	awful.key({}, "XF86MonBrightnessDown", function()
 		awful.util.spawn("brightnessctl set 10%-")
-	end, { description = "Increase Brightness", group = "multi-media" })
+	end, { description = "Decrease Brightness", group = "multi-media" })
 )
 
 clientkeys = gears.table.join(
@@ -571,9 +571,9 @@ client.connect_signal("manage", function(c)
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.
-client.connect_signal("mouse::enter", function(c)
-	c:emit_signal("request::activate", "mouse_enter", { raise = false })
-end)
+-- client.connect_signal("mouse::enter", function(c)
+-- 	c:emit_signal("request::activate", "mouse_enter", { raise = false })
+-- end)
 
 client.connect_signal("focus", function(c)
 	c.border_color = beautiful.border_focus
