@@ -113,3 +113,18 @@ if ! shopt -oq posix; then
 fi
 
 . ~/github/z/z.sh
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+case ":$PATH:" in
+    *:/home/calle/.juliaup/bin:*)
+        ;;
+
+    *)
+        export PATH=/home/calle/.juliaup/bin${PATH:+:${PATH}}
+        ;;
+esac
+
+# <<< juliaup initialize <<<

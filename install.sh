@@ -3,7 +3,7 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
 
 xdg-user-dirs-update 
 sudo apt update
-sudo apt install nala -y
+sudo apt install -y nala
 sudo nala install -y ca-certificates curl gnupg
 
 # for nodejs for lsp
@@ -14,7 +14,7 @@ echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.co
 
 # install
 sudo nala update
-sudo nala install xorg feh awesome awesome-extra x11-xserver-utils rofi kitty vlc firefox-esr x11-common xserver-xorg-input-all desktop-base xserver-xorg-video-all alsa-utils pipewire pavucontrol network-manager vim wget zip unzip 7zip tldr git build-essential gettext cmake fonts-font-awesome fonts-noto-color-emoji acpid tlp blueman brightnessctl pamixer pipewire-alsa playerctl firmware-misc-nonfree htop python3-pip python3-pynvim python3-venv ssh lightdm ripgrep fuse openconnect nodejs -y
+sudo nala install -y xorg feh awesome awesome-extra x11-xserver-utils rofi kitty vlc firefox-esr x11-common xserver-xorg-input-all desktop-base xserver-xorg-video-all alsa-utils pipewire pavucontrol network-manager vim wget zip unzip 7zip tldr git build-essential gettext cmake fonts-font-awesome fonts-noto-color-emoji acpid tlp blueman brightnessctl pamixer pipewire-alsa playerctl firmware-misc-nonfree htop python3-pip python3-pynvim python3-venv ssh lightdm ripgrep fuse openconnect nodejs bluez-firmware bluetooth libspa-0.2-bluetooth  sbc-tools libsbc1
 sudo nala update && sudo nala upgrade -y
 
 # neovim
@@ -25,6 +25,9 @@ cd neovim/
 git checkout stable
 make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
+
+# julia
+curl -fsSL https://install.julialang.org | sh -s -- --yes
 
 # z
 cd ~/github/
@@ -41,21 +44,7 @@ sudo ln -s ~/github/obsidian/Obsidian-1.4.14.AppImage /usr/local/bin/Obsidian
 cd ~/github/
 mkdir discord && cd discord
 wget "https://discord.com/api/download?platform=linux&format=deb" -O discord.deb
-sudo apt install ./discord.deb
-
-# systemctl stuff
-sudo systemctl enable lightdm
-sudo systemctl set-default graphical.target
-
-sudo systemctl enable --now acpid
-sudo systemctl enable --now tlp
-systemctl enable --now --user pipewire-pulse.service
-systemctl enable --now --user pipewire.service
-
-sudo service networking stop
-sudo systemctl disable --now networking
-sudo systemctl enable --now NetworkManager
-sudo systemctl restart NetworkManager
+sudo apt install -y ./discord.deb
 
 # fonts
 cd
@@ -70,6 +59,17 @@ $SCRIPT_DIR/update_local.sh
 
 mkdir -p ~/.local/share/tldr
 tldr -u
+
+# systemctl stuff
+sudo systemctl enable lightdm
+sudo systemctl set-default graphical.target
+sudo systemctl enable --now acpid
+sudo systemctl enable --now tlp
+systemctl enable --now --user pipewire-pulse.service
+systemctl enable --now --user pipewire.service
+
+sudo systemctl disable --now networking
+sudo systemctl enable --now NetworkManager
 
 # nmcli c delete eduroam
 # nmcli connection add type wifi con-name "eduroam" ifname wlp0s20f3 ssid "eduroam" wifi-sec.key-mgmt wpa-eap 802-1x.identity "pazittla@ovgu.de" 802-1x.system-ca-certs yes 802-1x.eap "peap" 802-1x.phase2-auth mschapv2
