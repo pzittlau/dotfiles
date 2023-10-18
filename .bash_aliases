@@ -10,6 +10,8 @@ alias ll='ls -al'
 alias sns='sudo nala search'
 alias snu='sudo nala update && sudo nala upgrade'
 alias sni='sudo nala install'
+alias poweroff='systemctl poweroff'
+alias reboot='systemctl reboot'
 
 alias v='vim'
 if [[ -x /usr/bin/nvim ]]; then
