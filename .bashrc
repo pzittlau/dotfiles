@@ -114,6 +114,9 @@ fi
 
 . ~/github/z/z.sh
 
+stty susp undef
+bind '"\C-z":"fg\015"'
+
 # >>> juliaup initialize >>>
 
 # !! Contents within this block are managed by juliaup !!
