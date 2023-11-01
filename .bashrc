@@ -115,7 +115,7 @@ fi
 . ~/github/z/z.sh
 
 stty susp undef
-bind '"\C-z":"fg\015"'
+bind '"\C-a":"fg\015"'
 
 # >>> juliaup initialize >>>
 
