@@ -14,7 +14,7 @@ echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.co
 
 # install
 sudo nala update
-sudo nala install -y xorg feh awesome awesome-extra x11-xserver-utils rofi kitty vlc firefox-esr x11-common xserver-xorg-input-all desktop-base xserver-xorg-video-all alsa-utils pipewire pavucontrol network-manager vim wget zip unzip 7zip tldr git build-essential gettext cmake fonts-font-awesome fonts-noto-color-emoji acpid tlp blueman brightnessctl pamixer pipewire-alsa playerctl firmware-misc-nonfree htop python3-pip python3-pynvim python3-venv ssh lightdm ripgrep fuse openconnect nodejs bluez-firmware bluetooth libspa-0.2-bluetooth sbc-tools libsbc1
+sudo nala install -y xorg feh awesome awesome-extra x11-xserver-utils rofi kitty vlc firefox-esr x11-common xserver-xorg-input-all desktop-base xserver-xorg-video-all alsa-utils pipewire pavucontrol network-manager vim wget zip unzip 7zip tldr git build-essential gettext cmake fonts-font-awesome fonts-noto-color-emoji acpid tlp blueman brightnessctl pamixer pipewire-alsa playerctl firmware-misc-nonfree htop python3-pip python3-pynvim python3-venv ssh lightdm ripgrep fuse openconnect nodejs bluez-firmware bluetooth libspa-0.2-bluetooth sbc-tools libsbc1 nvidia-driver nvidia-settings nvidia-xconfig
 sudo nala update && sudo nala upgrade -y
 
 # neovim
