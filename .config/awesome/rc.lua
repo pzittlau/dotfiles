@@ -353,7 +353,7 @@ globalkeys = gears.table.join(
 
 	-- Prompt
 	awful.key({ modkey }, "r", function()
-		awful.util.spawn("rofi -show run")
+		awful.spawn("rofi -show run")
 	end, { description = "run prompt", group = "launcher" }),
 
 	awful.key({ modkey }, "x", function()
@@ -371,27 +371,27 @@ globalkeys = gears.table.join(
 
 	-- Browser
 	awful.key({ modkey }, "b", function()
-		awful.util.spawn("firefox")
+		awful.spawn("firefox")
 	end, { description = "start browser", group = "applications" }),
 
 	-- Multimedia Keys
 	awful.key({}, "XF86AudioRaiseVolume", function()
-		awful.util.spawn("pamixer --increase 10")
+		awful.spawn("pamixer --increase 10")
 	end, { description = "Raise Volume", group = "multi-media" }),
 	awful.key({}, "XF86AudioLowerVolume", function()
-		awful.util.spawn("pamixer --decrease 10")
+		awful.spawn("pamixer --decrease 10")
 	end, { description = "Lower Volume", group = "multi-media" }),
 	awful.key({}, "XF86AudioMute", function()
-		awful.util.spawn("pamixer --toggle-mute")
+		awful.spawn("pamixer --toggle-mute")
 	end, { description = "Mute Volume", group = "multi-media" }),
 	awful.key({}, "XF86AudioPlay", function()
-		awful.util.spawn("playerctl play-pause")
+		awful.spawn("playerctl play-pause")
 	end, { description = "Pause/Play", group = "multi-media" }),
 	awful.key({}, "XF86MonBrightnessUp", function()
-		awful.util.spawn("brightnessctl set +10%")
+		awful.spawn("brightnessctl set +10%")
 	end, { description = "Increase Brightness", group = "multi-media" }),
 	awful.key({}, "XF86MonBrightnessDown", function()
-		awful.util.spawn("brightnessctl set 10%-")
+		awful.spawn("brightnessctl set 10%-")
 	end, { description = "Decrease Brightness", group = "multi-media" })
 )
 

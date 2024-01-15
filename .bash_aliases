@@ -6,7 +6,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias grep='grep --color=auto'
 fi
 
-alias ll='ls -al'
+alias ll='ls -alh'
 alias sns='sudo nala search'
 alias snu='sudo nala update && sudo nala upgrade'
 alias sni='sudo nala install'
